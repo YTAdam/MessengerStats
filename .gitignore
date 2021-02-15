@@ -5,3 +5,4 @@ logfile.log
 test*
 *_test.py
 ndpe_readme.txt
+.idea/
