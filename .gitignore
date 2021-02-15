@@ -1,0 +1,7 @@
+data/
+output/
+venv/
+logfile.log
+test*
+*_test.py
+ndpe_readme.txt
