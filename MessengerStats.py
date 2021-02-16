@@ -14,7 +14,7 @@ from dateutil import tz
 import JSON_remove_duplicates
 
 
-output_path = "./output/" + dt.datetime.now().isoformat(sep='-', timespec="seconds") + '/'
+output_path = "./output/" + dt.datetime.now().strftime("%Y-%b-%d_%H%M%S") + '/'
 
 if not os.path.exists(output_path):
     os.makedirs(output_path)
