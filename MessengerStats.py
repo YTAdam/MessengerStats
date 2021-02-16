@@ -13,7 +13,13 @@ from dateutil import tz
 
 import JSON_remove_duplicates
 
-logging.basicConfig(filename="logfile.log", filemode='w', level=logging.INFO, format='---- %(asctime)s ---- %('
+
+output_path = "./output/" + dt.datetime.now().isoformat(sep='-', timespec="seconds") + '/'
+
+if not os.path.exists(output_path):
+    os.makedirs(output_path)
+
+logging.basicConfig(filename=output_path + "logfile.log", filemode='w', level=logging.INFO, format='---- %(asctime)s ---- %('
                                                                                      'levelname)s: %(message)s',
                     datefmt='%m/%d/%Y %I:%M:%S %p')
 logging.info('start')
@@ -502,26 +508,23 @@ for i in range(len(reactsTable[0][1])):  # 0 to 8
 
 # saving output files
 
-if not os.path.exists("./output/"):
-    os.makedirs("./output/")
-
-with open("./output/subscribe.txt", "w") as txt_file:
+with open(output_path + "subscribe.txt", "w") as txt_file:
     for line in subscribetable:
         txt_file.write("%s\n" % line)
 
-with open('./output/results.csv', 'w') as csvfile:
+with open(output_path + "results.csv", 'w') as csvfile:
     filewriter = csv.writer(csvfile, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
     filewriter.writerows(csvMatrix)
 
-with open('./output/timeTable.csv', 'w') as csvfile:
+with open(output_path + "timeTable.csv", 'w') as csvfile:
     filewriter = csv.writer(csvfile, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
     filewriter.writerow(timeTable[0])
     for index in range(1, len(timeTable)):
         filewriter.writerow(timeTable[len(timeTable) - index])
 
-with open('./output/dailyTimeTable.csv', 'w') as csvfile:
+with open(output_path + "dailyTimeTable.csv", 'w') as csvfile:
     filewriter = csv.writer(csvfile, delimiter=',',
                             quotechar='|', quoting=csv.QUOTE_MINIMAL)
     filewriter.writerows(dailyTimeTable)
