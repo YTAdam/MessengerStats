@@ -14,3 +14,7 @@ Then, you can launch ```MessengerStats.py```, specifying the path to the directo
 ```python3 MessengerStats.py  path/to/JSON/files```
 
 Results tables are generated in an ```output/``` directory, created where scripts are located.
+\
+\
+\
+*python modules dependencies :* ```python-dateutil``` *and* ```numpy```.
